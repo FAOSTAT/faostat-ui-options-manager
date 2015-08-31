@@ -1,7 +1,7 @@
 /*global define*/
 define(['jquery',
         'handlebars',
-        'text!faostat_ui_options_manager/html/templates.html',
+        'text!faostat_ui_options_manager/html/templates.hbs',
         'i18n!faostat_ui_options_manager/nls/translate',
         'faostat_commons',
         'wds_client',
