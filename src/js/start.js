@@ -47,11 +47,36 @@ define(['jquery',
     };
 
     OPTS_MGR.prototype.add_options_window = function (id, window_config) {
+
+        /* Variables. */
+        var that = this,
+            options_window,
+            i,
+            key;
+
+        /* Initiate the options window. */
         window_config.prefix = id + '_';
-        var options_window = new DownloadOptions();
+        options_window = new DownloadOptions();
         options_window.init(window_config);
         options_window.show_as_modal_window();
+
+        /* Register the window. */
         this.CONFIG.windows[id] = options_window;
+
+        /* Subscribe to window' events. */
+        /*global amplify*/
+        amplify.subscribe(id + '_event', function (data) {
+            console.debug(data);
+            for (i = 0; i < Object.keys(that.CONFIG.windows).length; i += 1) {
+                key = Object.keys(that.CONFIG.windows)[i];
+                if (key !== id) {
+                    console.debug(key);
+                    that.CONFIG.windows[key].init(data);
+                    that.CONFIG.windows[key].apply_configuration();
+                }
+            }
+        });
+
     };
 
     OPTS_MGR.prototype.destroy = function () {
