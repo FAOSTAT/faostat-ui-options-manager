@@ -66,11 +66,9 @@ define(['jquery',
         /* Subscribe to window' events. */
         /*global amplify*/
         amplify.subscribe(id + '_event', function (data) {
-            console.debug(data);
             for (i = 0; i < Object.keys(that.CONFIG.windows).length; i += 1) {
                 key = Object.keys(that.CONFIG.windows)[i];
                 if (key !== id) {
-                    console.debug(key);
                     that.CONFIG.windows[key].init(data);
                     that.CONFIG.windows[key].apply_configuration();
                 }
