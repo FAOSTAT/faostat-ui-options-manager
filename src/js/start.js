@@ -77,6 +77,10 @@ define(['jquery',
 
     };
 
+    OPTS_MGR.prototype.get_options_window = function (id) {
+        return this.CONFIG.windows[id];
+    };
+
     OPTS_MGR.prototype.destroy = function () {
         var i,
             key;
