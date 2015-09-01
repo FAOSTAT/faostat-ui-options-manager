@@ -21,7 +21,12 @@ define(['jquery',
             prefix: 'faostat_ui_options_manager_',
             placeholder_id: 'faostat_ui_options_manager',
             url_wds_crud: 'http://fenixapps2.fao.org/wds_5.1/rest/crud',
-            windows: {}
+            windows: {},
+            callback: {
+                onCodesChange: null,
+                onFlagsChange: null,
+                onUnitsChange: null
+            }
 
         };
 
@@ -56,6 +61,12 @@ define(['jquery',
 
         /* Initiate the options window. */
         window_config.prefix = id + '_';
+        if (window_config.callback === undefined) {
+            window_config.callback = {};
+        }
+        window_config.callback.onCodesChange = this.CONFIG.callback.onCodesChange;
+        window_config.callback.onFlagsChange = this.CONFIG.callback.onFlagsChange;
+        window_config.callback.onUnitsChange = this.CONFIG.callback.onUnitsChange;
         options_window = new DownloadOptions();
         options_window.init(window_config);
         options_window.show_as_modal_window();
