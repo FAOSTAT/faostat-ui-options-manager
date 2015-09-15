@@ -74,7 +74,7 @@ define(['jquery',
         /* Register the window. */
         this.CONFIG.windows[id] = options_window;
 
-        /* Subscribe to window' events. */
+        /* Subscribe to window's events. */
         /*global amplify*/
         amplify.subscribe(id + '_event', function (data) {
             for (i = 0; i < Object.keys(that.CONFIG.windows).length; i += 1) {
