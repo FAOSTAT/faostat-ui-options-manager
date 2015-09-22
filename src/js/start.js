@@ -51,7 +51,7 @@ define(['jquery',
 
     };
 
-    OPTS_MGR.prototype.add_options_window = function (id, window_config) {
+    OPTS_MGR.prototype.add_options = function (id, window_config, mode) {
 
         /* Variables. */
         var that = this,
@@ -69,7 +69,13 @@ define(['jquery',
         window_config.callback.onUnitsChange = this.CONFIG.callback.onUnitsChange;
         options_window = new DownloadOptions();
         options_window.init(window_config);
-        options_window.show_as_modal_window();
+
+        /* Display according to the selected mode. */
+        if (mode === 'window') {
+            options_window.show_as_modal_window();
+        } else if (mode === 'panel') {
+            options_window.show_as_panel();
+        }
 
         /* Register the window. */
         this.CONFIG.windows[id] = options_window;
@@ -86,6 +92,14 @@ define(['jquery',
             }
         });
 
+    };
+
+    OPTS_MGR.prototype.add_options_window = function (id, window_config) {
+        this.add_options(id, window_config, 'window');
+    };
+
+    OPTS_MGR.prototype.add_options_panel = function (id, window_config) {
+        this.add_options(id, window_config, 'panel');
     };
 
     OPTS_MGR.prototype.get_options_window = function (id) {
