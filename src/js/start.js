@@ -25,6 +25,7 @@ define(['jquery',
             callback: {
                 onCodesChange: null,
                 onFlagsChange: null,
+                onOutputTypeChange: null,
                 onUnitsChange: null
             }
 
@@ -65,6 +66,7 @@ define(['jquery',
             window_config.callback = {};
         }
         window_config.callback.onCodesChange = this.CONFIG.callback.onCodesChange;
+        window_config.callback.onOutputTypeChange = this.CONFIG.callback.onOutputTypeChange;
         window_config.callback.onFlagsChange = this.CONFIG.callback.onFlagsChange;
         window_config.callback.onUnitsChange = this.CONFIG.callback.onUnitsChange;
         options_window = new DownloadOptions();
