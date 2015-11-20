@@ -23,6 +23,7 @@ define(['jquery',
             url_wds_crud: 'http://fenixapps2.fao.org/wds_5.1/rest/crud',
             windows: {},
             callback: {
+                onDecimalSeparatorChange: null,
                 onDecimalNumbersChange: null,
                 onCodesChange: null,
                 onFlagsChange: null,
@@ -68,6 +69,7 @@ define(['jquery',
         }
         window_config.callback.onDecimalNumbersChange = this.CONFIG.callback.onDecimalNumbersChange;
         window_config.callback.onCodesChange = this.CONFIG.callback.onCodesChange;
+        window_config.callback.onDecimalSeparatorChange = this.CONFIG.callback.onDecimalSeparatorChange;
         window_config.callback.onOutputTypeChange = this.CONFIG.callback.onOutputTypeChange;
         window_config.callback.onFlagsChange = this.CONFIG.callback.onFlagsChange;
         window_config.callback.onUnitsChange = this.CONFIG.callback.onUnitsChange;
