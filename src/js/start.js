@@ -1,14 +1,9 @@
-/*global define*/
+/*global define, amplify*/
 define(['jquery',
-        'handlebars',
-        'text!faostat_ui_options_manager/html/templates.hbs',
-        'i18n!faostat_ui_options_manager/nls/translate',
-        'faostat_commons',
-        'wds_client',
         'FENIX_UI_DOWNLOAD_OPTIONS',
         'bootstrap',
         'sweetAlert',
-        'amplify'], function ($, Handlebars, templates, translate, FAOSTATCommons, WDSClient, DownloadOptions) {
+        'amplify'], function ($, DownloadOptions) {
 
     'use strict';
 
@@ -42,15 +37,6 @@ define(['jquery',
 
         /* Fix the language, if needed. */
         this.CONFIG.lang = this.CONFIG.lang !== null ? this.CONFIG.lang : 'en';
-
-        /* Store FAOSTAT language. */
-        this.CONFIG.lang_faostat = FAOSTATCommons.iso2faostat(this.CONFIG.lang);
-
-        /* Initiate the WDS client. */
-        this.CONFIG.w = new WDSClient({
-            datasource: this.CONFIG.datasource,
-            serviceUrl: this.CONFIG.url_wds_crud
-        });
 
     };
 
@@ -87,7 +73,6 @@ define(['jquery',
         this.CONFIG.windows[id] = options_window;
 
         /* Subscribe to window's events. */
-        /*global amplify*/
         amplify.subscribe(id + '_event', function (data) {
             for (i = 0; i < Object.keys(that.CONFIG.windows).length; i += 1) {
                 key = Object.keys(that.CONFIG.windows)[i];
@@ -122,7 +107,10 @@ define(['jquery',
     };
 
     OPTS_MGR.prototype.dispose = function () {
-
+        var i;
+        for (i = 0; i < this.CONFIG.windows.length; i += 1) {
+            this.CONFIG.windows[i].dispose();
+        }
     };
 
     return OPTS_MGR;
