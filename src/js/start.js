@@ -121,6 +121,10 @@ define(['jquery',
         }
     };
 
+    OPTS_MGR.prototype.dispose = function () {
+
+    };
+
     return OPTS_MGR;
 
 });
