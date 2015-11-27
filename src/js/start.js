@@ -21,6 +21,7 @@ define(['jquery',
                 onDecimalSeparatorChange: null,
                 onDecimalNumbersChange: null,
                 onCodesChange: null,
+                onNullValuesChange: null,
                 onFlagsChange: null,
                 onOutputTypeChange: null,
                 onUnitsChange: null
@@ -55,6 +56,7 @@ define(['jquery',
         }
         window_config.callback.onDecimalNumbersChange = this.CONFIG.callback.onDecimalNumbersChange;
         window_config.callback.onCodesChange = this.CONFIG.callback.onCodesChange;
+        window_config.callback.onNullValuesChange = this.CONFIG.callback.onNullValuesChange;
         window_config.callback.onDecimalSeparatorChange = this.CONFIG.callback.onDecimalSeparatorChange;
         window_config.callback.onOutputTypeChange = this.CONFIG.callback.onOutputTypeChange;
         window_config.callback.onFlagsChange = this.CONFIG.callback.onFlagsChange;
